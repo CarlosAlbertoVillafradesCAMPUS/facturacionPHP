@@ -1,0 +1,52 @@
+<form class="mb-4" action="">
+    <div class="container">
+            <div class="row gy-2 text-white">
+                <div class="col-12 fondo rounded pb-3">
+                    <h2 class="text-center m-4">Header the bill</h2>
+                    <div class="row gy-3">
+                        <div class="col-6 col-lg-4 d-flex flex-column">
+                            <label  class="form-label fs-6 m-0" for="numeroFactura">Nro de factura</label>
+                            <input class="form-control" type="number" required name="numeroFactura">
+                        </div>
+                        <div class="col-6 col-lg-3 d-flex flex-column">
+                            <label  class="form-label fs-6 m-0" for="fechaFactura">Fecha de factura</label>
+                            <input class="form-control" type="date" required name="fechaFactura">
+                        </div>
+                        <div class="col-6 col-lg-5 d-flex flex-column">
+                            <label  class="form-label fs-6 m-0" for="vendedor">Vendedor</label>
+                            <input class="form-control" type="text" required name="vendedor">
+                        </div>
+                        <div class="col-6 col-lg-3 d-flex flex-column">
+                            <label  class="form-label fs-6 m-0" for="idCliente">Nro Identificacion Cliente</label>
+                            <input class="form-control" type="number" required name="idCliente">
+                        </div>
+                        <div class="col-6 col-lg-4 d-flex flex-column">
+                            <label  class="form-label fs-6 m-0" for="nombre">Nombre y Apellido</label>
+                            <input class="form-control" type="text" required name="nombre">
+                        </div>
+                        <div class="col-6 col-lg-5 d-flex flex-column">
+                            <label  class="form-label fs-6 m-0" for="correoElectronico">Correo Electronico</label>
+                            <input class="form-control" type="email" required name="correoElectronico">
+                        </div>
+                        <div class="col-6 col-lg-6 d-flex flex-column">
+                            <label  class="form-label fs-6 m-0" for="direccion">Direccion</label>
+                            <input class="form-control" type="text" required name="direccion">
+                        </div>
+                        <div class="col-6 col-lg-6 d-flex flex-column">
+                            <label  class="form-label fs-6 m-0" for="telefono">Telefono de Contacto</label>
+                            <input class="form-control" type="number" required name="telefono">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <input class="btn btn-dark w-100 fs-4 py-3" type="submit" value="Bill Details">
+                </div>
+            </div>
+    </div>
+</form>
+
+<style>
+    .fondo{
+        background-color: rgba(0, 0, 0, 0.44);
+    }
+</style>

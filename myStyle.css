@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url(assets/img/fondo.webp);
+    background-size: cover;
+}
+h1 {
+    color: hsla(0, 0%, 0%, .9);
+    font: normal 5rem Varela Round, sans-serif;
+    font-size: 4rem !important;
+    letter-spacing: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    animation: move linear 2000ms infinite;  
+  }
+  
+  @keyframes move {
+    0% {
+      text-shadow:
+        4px -4px 0 hsla(0, 100%, 50%, 1), 
+        3px -3px 0 hsla(0, 100%, 50%, 1), 
+        2px -2px 0 hsla(0, 100%, 50%, 1), 
+        1px -1px 0 hsla(0, 100%, 50%, 1),
+        -4px 4px 0 rgb(0, 30, 255), 
+        -3px 3px 0 rgb(0, 30, 255), 
+        -2px 2px 0 rgb(0, 30, 255), 
+        -1px 1px 0 rgb(0, 30, 255)
+      ;
+    }
+    /* 25% {    
+      text-shadow:      
+        -4px -4px 0 rgb(0, 30, 255), 
+        -3px -3px 0 rgb(0, 30, 255), 
+        -2px -2px 0 rgb(0, 30, 255), 
+        -1px -1px 0 rgb(0, 30, 255),
+        4px 4px 0 hsla(0, 100%, 50%, 1), 
+        3px 3px 0 hsla(0, 100%, 50%, 1), 
+        2px 2px 0 hsla(0, 100%, 50%, 1), 
+        1px 1px 0 hsla(0, 100%, 50%, 1)      
+      ;
+    } */
+    50% {
+      text-shadow:
+        -4px 4px 0 hsla(0, 100%, 50%, 1), 
+        -3px 3px 0 hsla(0, 100%, 50%, 1), 
+        -2px 2px 0 hsla(0, 100%, 50%, 1), 
+        -1px 1px 0 hsla(0, 100%, 50%, 1),
+        4px -4px 0 rgb(0, 30, 255), 
+        3px -3px 0 rgb(0, 30, 255), 
+        2px -2px 0 rgb(0, 30, 255), 
+        1px -1px 0 rgb(0, 30, 255)
+      ;
+    }
+    /* 75% {
+      text-shadow:
+        4px 4px 0 rgb(0, 30, 255), 
+        3px 3px 0 rgb(0, 30, 255), 
+        2px 2px 0 rgb(0, 30, 255), 
+        1px 1px 0 rgb(0, 30, 255),
+        -4px -4px 0 hsla(0, 100%, 50%, 1), 
+        -3px -3px 0 hsla(0, 100%, 50%, 1), 
+        -2px -2px 0 hsla(0, 100%, 50%, 1), 
+        -1px -1px 0 hsla(0, 100%, 50%, 1)      
+      ;
+    } */
+    100% {
+      text-shadow:
+        4px -4px 0 hsla(0, 100%, 50%, 1), 
+        3px -3px 0 hsla(0, 100%, 50%, 1), 
+        2px -2px 0 hsla(0, 100%, 50%, 1), 
+        1px -1px 0 hsla(0, 100%, 50%, 1),
+        -4px 4px 0 rgb(0, 30, 255), 
+        -3px 3px 0 rgb(0, 30, 255), 
+        -2px 2px 0 rgb(0, 30, 255), 
+        -1px 1px 0 rgb(0, 30, 255)
+      ;
+    }  
+  }
