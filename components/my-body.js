@@ -10,25 +10,31 @@ export default class myBody extends HTMLElement{
 
     constructor(){
         super();
-        this.count=1;
+        this.plantilla
     }
 
     async addProduct(e){
-        //hago fecth de my-product.html
-        let dataProduct = await(await fetch("/components/my-product.html")).text();
-        //lo parseo para transformar el texto en html
-        let parserDataProduct = new DOMParser().parseFromString(dataProduct, "text/html");
+        this.plantilla = this.querySelector("#products").children;
+            let myPlantilla = this.plantilla[this.plantilla.length-1];
+            myPlantilla = myPlantilla.cloneNode(true);
+            document.querySelector("#products").insertAdjacentElement("beforeend", myPlantilla);
+            
+       /*  let myProduct = document.createElement("my-product");
         this.products = document.querySelector("#products");
-        let myProduct = document.createElement("my-product");
-        myProduct.insertAdjacentElement("beforeend", parserDataProduct.body.children[0]);
-        myProduct.querySelector(`#product_0`).id = `product_${this.count}`;
-        let buttons = myProduct.querySelectorAll("button");
+        this.products.insertAdjacentElement("beforeend", myProduct);
+
+        let container = document.querySelectorAll(`#product_${this.count-1}`)
+        console.log(container);
+        container[0].id = `product_${this.count}`;
+        
+        let buttons = container[0].querySelectorAll(".btnsum");
         buttons.forEach(element => {
             element.id = `product_${this.count}`
         });
+
+
         console.log(myProduct);
-        this.products.insertAdjacentElement("beforeend", myProduct)
-        this.count++;
+        this.count++; */
 
         
         /* console.log(dataParseada); */
@@ -38,8 +44,7 @@ export default class myBody extends HTMLElement{
         document.adoptedStyleSheets.push(styles);
         Promise.resolve(myBody.components()).then(html=>{
             this.innerHTML = html;
-            this.buttonAdd = this.querySelector("#buttonAdd");
-            this.buttonAdd.addEventListener("click", this.addProduct.bind(this));
+            this.addProduct = this.querySelector("#add").addEventListener("click", this.addProduct.bind(this))
         })
     }
 }

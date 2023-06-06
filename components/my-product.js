@@ -15,11 +15,19 @@ export default class myProduct extends HTMLElement{
         let $ = e.target;
         console.log($);
         if ($.nodeName == "BUTTON") {
-            let inputs = document.querySelectorAll(`#${$.dataset.row} input`);
+            let caja = e.target.parentNode.parentNode;
+            let inputs = caja.querySelectorAll("input");
+
             if ($.innerHTML == "-") {
                 inputs.forEach(element => {
                     if (element.name == "amount" && element.value == 0) {
-                        document.querySelector(`#${$.dataset.row}`).remove();
+                        console.log(caja.parentNode.parentNode.children.length );
+                        if(caja.parentNode.parentNode.children.length > 0 && caja.parentNode.parentNode.children.length == 1){
+                            caja.remove();
+                        }else{
+                            caja.parentNode.remove()
+                        }
+                        
                     }else if (element.name == "amount"){
                         element.value--;
                     }
@@ -40,6 +48,7 @@ export default class myProduct extends HTMLElement{
             this.innerHTML = html;
             this.products = document.querySelector("#products");
             this.products.addEventListener("click", this.selection);
+            
         })
     }
 }
