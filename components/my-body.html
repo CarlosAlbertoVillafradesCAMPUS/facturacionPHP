@@ -1,13 +1,13 @@
     <div class="container">
         <div class="row gy-1">
-            <div class="col-12 bg-white p-3 rounded mb-3 overflow-auto" id="products" style="height: 169px;">
+            <div class="col-12 p-3 rounded mb-3 overflow-auto fondoBody" id="products" style="height: 169px;">
                 <my-product></my-product>
             </div>
             
             <div class="col-12">
                 <div class="row">
                     <div class="col-4 d-flex flex-column">
-                        <button class="btn btnBlue text-white w-100 fs-4 py-2 mb-2">Finish Shopping</button>
+                        <button class="btn btnBlue text-white w-100 fs-4 py-2 mb-2" id="send">Finish Shopping</button>
                     </div>
                     <div class="col-4 d-flex flex-column">
                         <button class="btn btn-secondary text-white w-100 fs-4 py-2 mb-2">Details</button>
@@ -21,7 +21,11 @@
     </div>
 
 <style>
+    .fondoBody{
+        background-color: rgba(0, 0, 0, 0.44);
+        color: white;
 
+    }
     .btnAdd{
         background-color: rgb(74, 0, 142) !important;
     }
@@ -30,7 +34,7 @@
         transition: all .3s ease;
     }
     .btnBlue{
-        background-color: rgb(0, 16, 137) !important;
+        background-color: rgb(45, 105, 255) !important;
     }
     .btnBlue:hover{
         background-color: rgb(0, 30, 255) !important;

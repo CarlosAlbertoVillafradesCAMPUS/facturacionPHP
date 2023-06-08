@@ -13,14 +13,12 @@ export default class myProduct extends HTMLElement{
 
     selection(e){
         let $ = e.target;
-        console.log($);
         if ($.nodeName == "BUTTON") {
             let caja = e.target.parentNode.parentNode;
             let inputs = caja.querySelectorAll("input");
-
             if ($.innerHTML == "-") {
                 inputs.forEach(element => {
-                    if (element.name == "amount" && element.value == 0) {
+                    if (element.name == "amountProducto" && element.value == 0) {
                         console.log(caja.parentNode.parentNode.children.length );
                         if(caja.parentNode.parentNode.children.length > 0 && caja.parentNode.parentNode.children.length == 1){
                             caja.remove();
@@ -28,13 +26,13 @@ export default class myProduct extends HTMLElement{
                             caja.parentNode.remove()
                         }
                         
-                    }else if (element.name == "amount"){
+                    }else if (element.name == "amountProducto"){
                         element.value--;
                     }
                 });
             } else{
                 inputs.forEach(element => {
-                   if(element.name == "amount"){
+                   if(element.name == "amountProducto"){
                         element.value++;
                     }
                 });

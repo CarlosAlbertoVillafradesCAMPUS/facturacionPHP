@@ -18,33 +18,56 @@ export default class myBody extends HTMLElement{
             let myPlantilla = this.plantilla[this.plantilla.length-1];
             myPlantilla = myPlantilla.cloneNode(true);
             document.querySelector("#products").insertAdjacentElement("beforeend", myPlantilla);
-            
-       /*  let myProduct = document.createElement("my-product");
-        this.products = document.querySelector("#products");
-        this.products.insertAdjacentElement("beforeend", myProduct);
+    }
 
-        let container = document.querySelectorAll(`#product_${this.count-1}`)
-        console.log(container);
-        container[0].id = `product_${this.count}`;
-        
-        let buttons = container[0].querySelectorAll(".btnsum");
-        buttons.forEach(element => {
-            element.id = `product_${this.count}`
+    async sendData(e){
+        let inputs = document.querySelectorAll("input");
+        //converit un Nodelist en un Array
+        let arrayInputs = Array.prototype.slice.call(inputs)
+        let facturas = {}, cliente = {}, productos = {}, empresa = {};
+        let data = {
+            productos:[]
+        }
+
+        arrayInputs.forEach((val,id) => {
+            if(val.name.includes("Factura")){
+                facturas[val.name] = val.value;
+            }else if(val.name.includes("Cliente")){
+                cliente[val.name] = val.value;
+            } else if(val.name.includes("Producto")){
+                productos[val.name] = val.value;
+                console.log(Object.keys(productos).length);
+                if(Object.keys(productos).length == 4){
+                    
+                    data.productos.push(productos);
+                    productos = {}
+                }   
+            } else {
+                empresa[val.name] = val.value;
+            }
         });
 
-
-        console.log(myProduct);
-        this.count++; */
-
+        data.facturas = facturas;
+        data.cliente = cliente;
+        data.empresa = empresa;
         
-        /* console.log(dataParseada); */
+
+        console.log(JSON.stringify(data));
+        let config = {
+            method: "POST",
+            header: {"Content-Type": "application/json"},
+            body:JSON.stringify(data)
+        }
+        let peticion = await (await fetch("uploads/app.php", config)).text();
+        document.querySelector("pre").innerHTML = peticion;
     }
 
     connectedCallback(){
         document.adoptedStyleSheets.push(styles);
         Promise.resolve(myBody.components()).then(html=>{
             this.innerHTML = html;
-            this.addProduct = this.querySelector("#add").addEventListener("click", this.addProduct.bind(this))
+            this.addButton = this.querySelector("#add").addEventListener("click", this.addProduct.bind(this));
+            this.sendButton = this.querySelector("#send").addEventListener("click", this.sendData.bind(this));
         })
     }
 }
