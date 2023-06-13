@@ -37,10 +37,11 @@ trait getInstance{
         }
 
         public function enviarDatos($_DATA){
-            factura::getInstance($_DATA["facturas"]);
+            echo json_encode($_DATA, JSON_PRETTY_PRINT);
+           /*  factura::getInstance($_DATA["facturas"]);
             empresa::getInstance($_DATA["empresa"]);
             clientes::getInstance($_DATA["cliente"]);
-            productos::getInstance($_DATA["productos"]);
+            productos::getInstance($_DATA["productos"]); */
         }
     }
 
