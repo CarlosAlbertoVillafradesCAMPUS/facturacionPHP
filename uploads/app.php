@@ -6,11 +6,15 @@ trait getInstance{
         $arg = array_pop($arg);
         return (!(self::$instance instanceof self) || !empty($arg)) ? self::$instance = new static(...(array) $arg) : self::$instance;
     }
+    function __set($name, $value){
+        $this->name = $value;
+    }
 }
     function autoload($class) {
         // Directorios donde buscar archivos de clases
         $directories = [
-            dirname(__DIR__).'/scripts/'
+            dirname(__DIR__).'/scripts/',
+            dirname(__DIR__).'/scripts/db/'
         ];
         // Convertir el nombre de la clase en un nombre de archivo relativo
         $classFile = str_replace('\\', '/', $class) . '.php';
@@ -26,8 +30,11 @@ trait getInstance{
         }
     }
     spl_autoload_register("autoload");
+   
+ 
+    clientes::getInstance(json_decode(file_get_contents("php://input"), true));
 
-    class superApi{
+   /*  class superApi{
         use getInstance;
         public function __construct(private $_METHOD,private $_DATA, public $_HEADER ){
             match($_METHOD){
@@ -38,10 +45,10 @@ trait getInstance{
 
         public function enviarDatos($_DATA){
             echo json_encode($_DATA, JSON_PRETTY_PRINT);
-           /*  factura::getInstance($_DATA["facturas"]);
+            factura::getInstance($_DATA["facturas"]);
             empresa::getInstance($_DATA["empresa"]);
             clientes::getInstance($_DATA["cliente"]);
-            productos::getInstance($_DATA["productos"]); */
+            productos::getInstance($_DATA["productos"]);
         }
     }
 
@@ -51,5 +58,5 @@ trait getInstance{
         "_HEADER"=> apache_request_headers()
     ];
     //llmamos la instancia y le pasamos la data del contrsuctor
-    superApi::getInstance($data);
+    superApi::getInstance($data); */
 ?>

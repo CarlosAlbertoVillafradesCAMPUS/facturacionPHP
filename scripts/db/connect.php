@@ -1,9 +1,22 @@
 <?php
-class connect {
+ interface environments{
+    public function __get($name);
+}
+ abstract class connect extends credentials implements environments{
     use getInstance;
-    protected $conx;
-    public function __construct(){
-        $this->conx = new PDO("mysql:host=172.16.48.210;port=3306;username=sputnik;password=Sp3tn1kC@;database=db_hunter_factura");
+    private $conx;
+    public function __construct(public $driver = "mysql", private $port = 3306){
+        try {
+            $this->conx = new PDO($this->driver.":host=".$this->__get("host").";port=".$this->port.";user=".$this->user.";password=".$this->password.";dbname=".$this->__get("dbname"));
+
+            $this->conx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //!conexión PDO
+
+            echo "OK";
+
+        } catch (\PDOException $e) {
+           print_r($e->getMessage());
+           $this->conx = $e->getMessage();
+        }
     }
 }
 ?>
